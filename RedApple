@@ -1,0 +1,91 @@
+package ExerciseSuperSubClass;
+
+public class RedApple extends Apple{
+	private int calories;
+	private char gred;
+	private char vitA;
+	private int price;
+	private int quantity;
+	private int discount;
+	
+	public RedApple() { //constructor for sub class
+		super();//inherit data,method from super class 
+		calories=0;
+		gred='B';
+		vitA='Y';
+		price=0;
+		quantity=0;
+		discount=0;
+		
+	}
+	
+	public RedApple(String name, int p, int q, int c, char gd, char vA, int d) { //constructor with argument
+		super(name, q, p);//called method in superclass with passing parameter
+		quantity=q;
+		price=p;
+		calories=c;
+		gred=gd;
+		vitA=vA;
+		discount=d;
+		
+		setInfo(name, p, q, c, gd, vA, d); //method for overloading
+		
+	}
+	
+	public void setInfo(String name, int p, int q, int c, char gd, char vA, int d) { //overloading method with 7 parameter
+		if(p>=0)
+			price=p;
+		else
+			price=0;
+		
+		if(q>=0)
+			quantity=q;
+		else
+			quantity=0;
+		
+		if(c>=0)
+			calories=c;
+		else
+			calories=0;
+		
+		if(gd == 'B')
+			gred = gd;
+		else
+			gred = 'C';
+		
+		if(vA == 'Y')
+			vitA = vA;
+		else
+			vitA = 'N';
+		
+		if(d>=0)
+			discount = d;
+		else
+			discount = 0;
+		
+	}
+
+	public int totalCalories() {
+		return quantity*calories;
+	}
+	
+	public int totalPrice() {
+		return price*quantity;
+	}
+	
+	public int Finalprice() {
+		return totalPrice()-(totalPrice()*discount/100);
+	}
+	
+	public String toString() { //overriding method
+		return "Price: RM" + price 
+				+ "\nQuantity: " + quantity + "units"
+				+ "\nDiscount: " + discount + "%"
+				+ "\nFinal Price: RM" + Finalprice()
+				+ "\nCalories: " + calories
+				+ "\nGred    : " + gred
+				+ "\nDoes Red Apple has vitamin A(Y/N): " + vitA;
+
+	}
+}
+
