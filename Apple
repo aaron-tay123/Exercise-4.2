@@ -1,0 +1,45 @@
+package ExerciseSuperSubClass;
+
+public class Apple extends Fruit{ //sub class
+	private int quantity;
+	private int price;
+	
+	public Apple() { //constructor without argument
+		super();//inherit data,method from super class 
+		quantity=0;
+		price=0;
+				
+	}
+	
+	public Apple(String name, int q, int p) { //constructor with argument
+		super(name);//called method in superclass with passing parameter
+		quantity = q;
+		price = p;
+		
+		setInfo(name, q, p); //method for overloading
+	}	
+	
+	public void setInfo(String name, int q, int p) {//overloading method with 3 parameter
+		if (q>=0)
+			quantity=q;
+		else
+			quantity=0;
+		
+		if (q>=0)
+			price=p;
+		else
+			price=0;
+		
+	}
+	
+	public int getTotalPrice() {
+		return this.quantity*this.price;
+	}
+	
+	public String toString() { //overriding method
+		return "Price: RM" + price 
+				+ "\nQuantity: " + quantity + "units"
+				+ "\nTotal Price: RM" + getTotalPrice();
+	}
+
+}
