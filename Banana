@@ -1,0 +1,64 @@
+package ExerciseSuperSubClass;
+
+public class Banana extends Fruit{ //subclass of Fruit
+	private char vitA;
+	private double price;
+	private int quantity;
+	
+	public Banana() { //constructor without argument
+		super();//inherit data,method from super class 
+		vitA = 'Y';
+		price=0;
+		quantity=0;
+		
+	}
+	public Banana(String name, char vA, double p, int q) { //constructor with argument
+		super(name);//called method in superclass with passing parameter
+		vitA=vA;
+		price=p;
+		quantity=q;
+		
+		setInfo(name, vA, p, q); //method for overloading
+		
+	}
+	public void setInfo(String name, char vA, double p, int q) { //overloading method with 4 parameter
+		if(vA == 'Y')
+			vitA= vA;
+		else
+			vitA= 'N';
+		
+		if(p>= 0)
+			price= p;
+		else
+			price= 0;
+		
+		if(q>=0)
+			quantity= q;
+		else
+			quantity= 0;
+		
+	}
+
+	public char VitA() {
+		return 'Y';
+	}
+	
+	public double Price() {
+		return price;
+	}
+	
+	public int Quantity() {
+		return quantity;
+	}
+	
+	public double totalPrice() {
+		return this.price*this.quantity;
+	}
+	
+	public String toString() {
+		return "\nDoes banana has vitamin A (Y/N): " + vitA
+				+"\nPrice: RM" + price
+				+"\nQuantity: " + quantity + "units"
+				+"\nThe total price for " + quantity + " units banana are " + "RM" + totalPrice();
+	}
+}
